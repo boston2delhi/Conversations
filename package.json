@@ -13,7 +13,6 @@
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
     "start": "react-native-scripts start",
-    "build-web": "webpack --watch",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
     "eject": "react-native-scripts eject",
