@@ -7,11 +7,13 @@
     "babel-loader": "^7.1.2",
     "jest-expo": "23.0.0",
     "react-native-scripts": "1.8.1",
+    "react-scripts": "^1.0.17",
     "react-test-renderer": "16.0.0",
     "webpack": "^3.10.0"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
+    "start:web": "react-scripts start",
     "start": "react-native-scripts start",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
