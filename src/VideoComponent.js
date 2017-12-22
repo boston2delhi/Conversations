@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
 import YouTube from 'react-youtube';
-import PreBufferVideos from './prebuffervideos';
+import PreBufferVideos from './directuseyoutubeapi';
+
+{/*
+  backgroundSwitchB is a boolean that when set to 'true' renders
+  the "directuseyoutubeapi" component, which skips the use of the react-youtube api and tries to render the video using the iframe directly.  Have not yet been able to successfully implment this feature.
+*/}
 
 class VideoComponent extends Component {
   constructor(props){
     super(props);
     this.state = {
+      videoState: -1,
       videoIndex: 0,
       timePoint:0,
       videoArray: ["RmjpwFlnnS8","Nm7aEQsohI0","nOnJpEECI5U"],
       videoId: "RmjpwFlnnS8",
       backgroundSwitchB: false
+
     }
     this.changeVideo = this.changeVideo.bind(this)
     this.changeTime = this.changeTime.bind(this)
     this.backgroundSwitch = this.backgroundSwitch.bind(this)
-    // this.switchTime = this.switchTime.bind(this)
+    this._onReady = this._onReady.bind(this)
   }
+
   changeVideo(event){
     const index =(this.state.videoIndex + 1) % this.state.videoArray.length;
     this.setState({videoIndex: index})
@@ -27,18 +35,18 @@ class VideoComponent extends Component {
     const randMin = Math.random() * 180
     const newTime = `${randMin}`
     this.setState({timePoint:newTime})
+    console.log(event)
+
   }
 
   backgroundSwitch(event){
     this.setState({backgroundSwitchB: !this.state.backgroundSwitchB})
   }
 
-
   render(){
     let changeVideo = (event) => this.changeVideo(event)
     let changeTime = (event) => this.changeTime(event)
     let backgroundSwitch = (event) => this.backgroundSwitch(event)
-    // let switchTime = (event, opts) => this.switchTime(event, opts)
 
     const opts = {
       playerVars: {
@@ -50,12 +58,13 @@ class VideoComponent extends Component {
     }
   }
 
-  if (this.state.backgroundSwitchB === false){
+  if (this.state.backgroundSwitchB === true){
+
     return(
       <div>
         <button onClick={changeVideo}>Change Video</button>
         <button onClick={changeTime}>Change Timepoint (No Pre-loading)</button>
-        <button onClick={backgroundSwitch}>Background Switch</button>
+       <button onClick={backgroundSwitch}>Background Switch</button>
 
         <h4 className = "details">{this.state.timePoint}</h4>
 
@@ -73,19 +82,18 @@ class VideoComponent extends Component {
     )
   } else {
     return(
-      <div>
 
-        <button onClick={backgroundSwitch}>Manual</button>
-        // <div className="video-background video-foreground">
-        <PreBufferVideos YTid = "RmjpwFlnnS8">
-        </PreBufferVideos>
-        // </div>
-        </div>
+        <div>
+          <button onClick={backgroundSwitch}>Background Switch</button>
+          <PreBufferVideos YTid = {"RmjpwFlnnS8"}>
+          </PreBufferVideos>
+          </div>
     )
   }
   }
+
   _onReady(event) {
-  // access to player in all event handlers via event.target
-  }
+    this.setState({videoState : event.target.getPlayerState()})
+   }
 }
 export default VideoComponent;
