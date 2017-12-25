@@ -21,13 +21,15 @@
     "ios": "react-native-scripts ios",
     "eject": "react-native-scripts eject",
     "test": "node_modules/.bin/jest --watch",
-    "build-web": "webpack --watch --config webpack.config.web.js"
+    "build:web": "webpack --config webpack.config.web.js",
+    "deploy": "npm run build:web&&gh-pages -d public"
   },
   "jest": {
     "preset": "jest-expo"
   },
   "dependencies": {
     "expo": "^23.0.4",
+    "gh-pages": "^1.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-native": "0.50.3",
