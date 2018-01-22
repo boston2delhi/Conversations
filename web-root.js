@@ -4,5 +4,5 @@ import App from './App';
 
 AppRegistry.registerComponent('conversations', () => App);
 AppRegistry.runApplication('conversations', {
-  rootTag: document.getElementById('web-root')
+    rootTag: document.getElementById('web-root')
 });

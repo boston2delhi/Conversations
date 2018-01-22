@@ -1,23 +1,38 @@
 {
-  "name": "react-youtube-adventure",
+  "name": "conversations",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "jest": "^22.0.3",
+    "jest-cli": "^22.0.3",
+    "jest-expo": "23.0.0",
+    "react-native-scripts": "1.8.1",
+    "react-scripts": "^1.0.17",
+    "react-test-renderer": "16.0.0",
+    "webpack": "^3.10.0"
+  },
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "scripts": {
+    "start:web": "react-scripts start",
+    "start": "react-native-scripts start",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios",
+    "eject": "react-native-scripts eject",
+    "test": "node_modules/.bin/jest --watch",
+    "build:web": "webpack --config webpack.config.web.js",
+    "deploy": "npm run build:web&&gh-pages -d public"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
   "dependencies": {
-    "prop-types": "^15.6.0",
+    "expo": "^23.0.4",
+    "gh-pages": "^1.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-native-web-player": "^1.10.1",
-    "react-scripts": "1.0.17",
-    "react-youtube": "^7.5.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-react": "^6.24.1"
+    "react-native": "0.50.3",
+    "react-native-web": "^0.1.16"
   }
 }
