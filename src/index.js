@@ -5,8 +5,8 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { AppRegistry } from 'react-native';
 
-//ReactDOM.render(<App />, document.getElementById('root'));
-//registerServiceWorker();
+// ReactDOM.render(<App />, document.getElementById('root'));
+// registerServiceWorker();
 
 
 AppRegistry.registerComponent('conversations', () => App);
